@@ -5,7 +5,7 @@ import java.util.Date;
 public class Payment {
 
 	private Booking booking;
-	private double serviceChargePercentage = 0.5;
+	private double serviceChargePercentage = 0.05;
 	private double totalPayment = 0;
 	private Date date;
 

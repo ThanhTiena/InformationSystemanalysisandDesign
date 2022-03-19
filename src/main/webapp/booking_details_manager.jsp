@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <%@page import="com.modelsSRP.Booking"%>
+<%@page import="com.modelsSRP.User"%>
 <%@page import="java.util.List"%>
 <html lang="en" dir="ltr">
 
@@ -45,6 +46,12 @@ if (b == null) {
 	b = new Booking();
 }
 %>
+<%
+User user = (User) request.getSession().getAttribute("manager");
+if (user == null) {
+	request.getRequestDispatcher("manager_login.jsp").forward(request, response);
+}
+%>
 
 
 <body>
@@ -86,17 +93,22 @@ if (b == null) {
 	<section class="home-section">
 		<nav class="narbar">
 			<div class="sidebar-button">
-				<i class='bx bx-menu sidebarBtn'></i> <span class="booking">Booking</span>
+				<i class='bx bx-menu sidebarBtn'></i> <span class="booking" style="padding-bottom: 50px !important;">Booking</span>
 			</div>
 			<div class="search-box">
 				<input type="text" placeholder="Search..."> <i
 					class='bx bx-search'></i>
 			</div>
-			<div class="profile-details"></div>
+			<div class="profile-details"
+				style="color: #2697FF; background: #F5F6FA; border: 2px solid #EFEEF1; border-radius: 6px; padding: 0 15px 0 2px;">
+				<p style="margin-left: auto; margin-right: auto;">
+					Hello,
+					<%=user.getUserName()%></p>
+			</div>
 		</nav>
 
 		<div class="booking-content">
-			<h2 class="mb-5">Paradise Hotel System</h2>
+			<h2 class="mb-5" style="color: #0A2558 !important; font-weight: bold;">Paradise Hotel System</h2>
 			<div class="booking-form-check">
 				<div>
 					<section class="main-content">
@@ -170,8 +182,8 @@ if (b == null) {
 								</table>
 							</div>
 							<div class="row">
-								<div class="invoice-btn-container">
-									<button class="invoice-btn" onclick="onoverlay()">Take Action</button>
+								<div class="invoice-btn-container" style="width:100%;">
+									<button class="invoice-btn" onclick="onoverlay()" style="margin-left: 44%">Take Action</button>
 								</div>
 							</div>
 						</div>
@@ -181,17 +193,17 @@ if (b == null) {
 			<div id="dark-overlay"></div>
 			<div class="take-action-form" id="overlay">
 				<div class="container">
-					<h2>Take action</h2>
+					<h2 style="font-weight: bold;">Take action</h2>
 					<form action="UpdateBookingServlet" method="POST">
 						<input style="display:none;" type="text" name="bid" id="bid" value="<%= b.getBid() %>"/>
 						<input style="display:none;" type="text" name="cid" id="cid" value="<%= b.getCustomer().getCid() %>"/>
 						<div class="form-lable-left">
 							<label for="remark">Remark</label>
 						</div>
-						<textarea class="form-control" id="remark" name="remark" rows="3"></textarea>
+						<textarea class="form-control" id="remark" name="remark" rows="3" style = "margin-left: 20% !important; margin-bottom: 10px;"></textarea>
 
 						<label for="status">Status</label> <select
-							class="mdb-select md-form" id="status" name="status">
+							class="mdb-select md-form" id="status" name="status" style = "margin-left: 12px;">
 							<option value="1">Approved</option>
 							<option value="2">Canceled</option>
 						</select>
@@ -206,13 +218,15 @@ if (b == null) {
 		</div>
 		<style>
 .take-action-form {
-	background-color: lightsalmon;
+	color: white;
+	background-color: #0A2558 !important;
 	width: 440px;
 	border: 1px solid black;
 	border-radius: 5px;
 }
 
 .take-action-form h2 {
+	color: white;
 	text-align: center;
 	padding-top: 10px;
 	margin-bottom: 0px !important;
@@ -243,9 +257,7 @@ if (b == null) {
 .take-action-button {
 	margin-top: 20px;
 	margin-bottom: 10px;
-	width: 130px;
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 15%;
 }
 
 .take-action-button button {

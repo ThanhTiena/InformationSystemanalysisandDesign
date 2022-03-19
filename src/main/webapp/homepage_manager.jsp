@@ -40,8 +40,8 @@ if (user == null) {
 			<li><a href="#"> <i class='bx bx-pencil'></i> <span
 					class="links_name">New Room</span>
 			</a></li>
-			<li><a href="ManagerBookingList"> <i class='bx bxs-book-alt'></i> <span
-					class="links_name">Booking</span>
+			<li><a href="ManagerBookingList"> <i class='bx bxs-book-alt'></i>
+					<span class="links_name">Booking</span>
 			</a></li>
 			<li><a href="#"> <i class='bx bx-user'></i> <span
 					class="links_name">Users</span>
@@ -67,26 +67,17 @@ if (user == null) {
 				<input type="text" placeholder="Search..."> <i
 					class='bx bx-search'></i>
 			</div>
-			<div class="profile-details">Hello, <%= user.getUserName() %></div>
+			<div class="profile-details"
+				style="color: #2697FF; background: #F5F6FA; border: 2px solid #EFEEF1; border-radius: 6px; padding: 0 15px 0 2px;">
+				<p style="margin-left: auto; margin-right: auto;">
+					Hello,
+					<%=user.getUserName()%></p>
+			</div>
 		</nav>
 		<div class="home-content">
 			<div class="about" id="about-id">
-				<div class="container" style="width: 50%;">
+				<div class="container" style="width: 50%; padding-left: 5%;">
 					<img src="./images/introduction.jpg" alt="about" loading="lazy">
-					<div class="about-content">
-						<h1>Welcome to Paradise Hotel</h1>
-						<p>Paradise Hotel is a leading 5-star international standard
-							hotel located right in the busy business, shopping, commercial
-							and entertainment center of Ho Chi Minh City and just away from
-							Tan Son Nhat International Airport about 8 km by road. Paradise
-							Hotel provides luxurious services and ensures the professionalism
-							of its staff. Popular services that are loved at the hotel
-							include: swimming pool, restaurant,...</p>
-						<p>Besides, the hotel also provides car rental service,
-							airport shuttle and 24/7 service. We are committed to satisfying
-							all guests who come to our hotel and provide many special offers
-							for their next arrivals.</p>
-					</div>
 				</div>
 			</div>
 		</div>

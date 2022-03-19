@@ -1,4 +1,5 @@
 <%@page import="com.modelsSRP.Booking"%>
+<%@page import="com.modelsSRP.User"%>
 <%@ include file="html.jsp"%>
 <%
 Booking b = (Booking) request.getSession().getAttribute("bookingDetails");
@@ -72,7 +73,7 @@ Booking b = (Booking) request.getSession().getAttribute("bookingDetails");
 							</tr>
 							<tr>
 								<th>Order Final Status</th>
-								<td><%=!b.getStatus().equalsIgnoreCase("Pending") ? b.getStatus() : "Not Yet Response"%></td>
+								<td id="status"><%=!b.getStatus().equalsIgnoreCase("Pending") ? b.getStatus() : "Not Yet Response"%></td>
 								<th>Admin Remark</th>
 								<td><%=b.getRemark().equalsIgnoreCase("remark") ? "Not Updated Yet" : b.getRemark()%></td>
 							</tr>
@@ -81,9 +82,8 @@ Booking b = (Booking) request.getSession().getAttribute("bookingDetails");
 				</div>
 				<div class="row">
 					<div class="invoice-btn-container">
-						<button class="invoice-btn" onclick="invoiceAlert()">Invoice</button>
-						<button class="invoice-btn" onclick="generateBill()">Get
-							Bill</button>
+						<button class="invoice-btn" onclick="invoiceAlert()">Cancel</button>
+						<button class="invoice-btn" onclick="generateBill()">Invoice</button>
 					</div>
 				</div>
 			</div>
@@ -110,9 +110,14 @@ Booking b = (Booking) request.getSession().getAttribute("bookingDetails");
 	<script type="text/javascript">
 		function invoiceAlert() {
 			let confirm = window.confirm("Are you sure to invoice booking?");
+			var status = document.getElementById('status').innerHTML;
 			if (confirm) {
-				alert("Booking canceled!");
-				document.getElementById('invoice-form').submit();
+				if (status != "APPROVAL") {
+					alert("Booking canceled!");
+					document.getElementById('invoice-form').submit();
+				}else{
+					alert("Your Booking is approved! You can not cancel");
+				}
 			} else {
 				alert("Invoicing canceled!");
 			}

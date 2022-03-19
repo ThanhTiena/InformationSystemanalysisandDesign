@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.modelsSRP.Customer"%>
 <%@ include file="html.jsp"%>
 <%
@@ -6,7 +8,7 @@ if (c == null) {
 	c = new Customer();
 	c.setCname("");
 	c.setCertificate("");
-}
+} 
 %>
 <body>
 	<%@ include file="header.jsp"%>
@@ -23,31 +25,34 @@ if (c == null) {
 								<div class="row">
 									<div class="col-12 col-md-6">
 										<div class="form-left">
-											<label for="name">Full Name</label> <input id="name"
+											<label for="name">Full Name</label> <input id="name"	
 												type="text" name="name" placeholder="Full name" required
-												value="<%= c.getCname()%>"> <label for="birth">Date
+												value="<%=c.getCname()%>"> <label for="birth">Date
 												of Birth</label> <input id="birth" type="date" name="birth"
-												placeholder="mm/dd/yyyy" required> <label
+												placeholder="mm/dd/yyyy" required
+												onchange="validateDate('birth')"> <label
 												for="arrive-day">Arrival Date</label> <input id="arrive-day"
 												type="date" name="arrive-day" placeholder="mm/dd/yyyy"
-												required> <label for="people">Number of
-												Customers</label> <input id="people" type="number" name="people"
-												placeholder=" ---" required>
+												required onchange="validateDate('arrive')"> <label
+												for="people">Number of Customers</label> <input id="people"
+												type="number" name="people" placeholder=" ---" required>
 										</div>
 									</div>
 									<div class="col-12 col-md-6">
 										<div class="form-right">
 											<label for="phone-number">Phone Number</label> <input
-												value="<%= c.getPhone()!=0?c.getPhone():""%>" id="phone-number" type="text" name="phone-number"
+												value="<%=c.getPhone() != 0 ? c.getPhone() : ""%>"
+												id="phone-number" type="text" name="phone-number"
 												placeholder="Phone number" required> <label
 												for="id-number">Certificate Number</label> <input
 												id="id-number" type="text" name="id-number"
-												placeholder="ID number" required value="<%= c.getCertificate()%>"> <label
+												placeholder="ID number" required
+												value="<%=c.getCertificate()%>"> <label
 												for="leave-day">Leaving Date</label> <input id="leave-day"
 												type="date" name="leave-day" placeholder="mm/dd/yyyy"
-												required=""> <label for="type-room">Room
-												Type</label> <select id="type-room" name="roomtype"
-												onchange="changeRoom()">
+												required onchange="validateDate('leave')"> <label
+												for="type-room">Room Type</label> <select id="type-room"
+												name="roomtype" onchange="changeRoom()">
 												<option value="single" selected="">Single Room</option>
 												<option value="double">Double Room</option>
 												<option value="quad">Quad Room</option>
@@ -150,6 +155,38 @@ if (c == null) {
             }
         } else {
             element.checked = true;
+        }
+    }
+    let today = new Date();
+    function validateDate(type) {
+        if (type == 'birth') {
+            let birth = document.getElementById('birth').value;
+            let dob = new Date(birth);
+            let days = today.getTime() / (1000 * 3600 * 24) - dob.getTime() / (1000 * 3600 * 24);
+            if (days < 6570) {
+                alert('Customer must be above 18 to book a room!');
+                document.getElementById('birth').value = "";
+            }
+        }
+        else if (type == 'arrive') {
+            let arrive = document.getElementById('arrive-day').value;
+            let day = new Date(arrive);
+            let days = day.getTime() / (1000 * 3600 * 24) - today.getTime() / (1000 * 3600 * 24);
+            if (days < 0) {
+                alert('Arrival date must be at least 1 days later!');
+                document.getElementById('arrive-day').value = "";
+            }
+        }
+        else {
+            let arrive = document.getElementById('arrive-day').value;
+            let leave = document.getElementById('leave-day').value;
+            let dayArrive = new Date(arrive);
+            let dayLeave = new Date(leave)
+            let days = dayLeave.getTime() / (1000 * 3600 * 24) - dayArrive.getTime() / (1000 * 3600 * 24);
+            if (days < 1) {
+                alert('Leave date must be at least 1 day after arrival date!');
+                document.getElementById('leave-day').value = "";
+            }
         }
     }
 </script>

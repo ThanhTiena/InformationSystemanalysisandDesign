@@ -146,7 +146,7 @@
   font-size: 22px;
   transition: all 0.4 ease;
 }
-.home-section .narbar .profile-details{
+.home-section .narbar .profile-details {
   display: flex;
   align-items: center;
   background: #F5F6FA;
@@ -242,4 +242,6 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+
 /* this is main login page for manager*/

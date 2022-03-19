@@ -28,41 +28,35 @@ Booking b = (Booking) request.getSession().getAttribute("bookingDetails");
 		<div id="htmlContent">
 			<div class="container" id="wrap1">
 				<div class="row">
-					<div class="col-8">
+					<div class="col-10">
 						<div class="title">Payment</div>
 						<div class="patient-info">
 							<div class="row">
-								<div class="col-3">
+								<div class="col-6">
 									<div>Customer Name:</div>
-								</div>
-								<div class="col-9">
-									<div class="pname"><%=b.getCustomer().getCname()%></div>
-								</div>
-
-								<div class="col-3">
+									<div class="pname">
+										<%=b.getCustomer().getCname()%>
+									</div>
 									<div>Customer Email:</div>
-								</div>
-								<div class="col-9">
-									<div class="paddress"><%=b.getCustomer().getEmail()%></div>
+									<div class="paddress">
+										<%=b.getCustomer().getEmail()%>
+									</div>
 								</div>
 
-								<div class="col-3">
+								<div class="col-6">
 									<div>Customer Phone:</div>
-								</div>
-								<div class="col-9">
-									<div class="pphone"><%=b.getCustomer().getPhone()%></div>
-								</div>
-
-								<div class="col-3">
+									<div class="pphone">
+										<%=b.getCustomer().getPhone()%>
+									</div>
 									<div>Date:</div>
-								</div>
-								<div class="col-9">
-									<div class="payment-date"><%=payment.getDate()%></div>
+									<div class="payment-date">
+										<%=payment.getDate()%>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-4" id="logo">
+					<div class="col-2" id="logo">
 						<img src="images/logo.png" alt="logo" loading="lazy">
 					</div>
 				</div>
@@ -85,19 +79,31 @@ Booking b = (Booking) request.getSession().getAttribute("bookingDetails");
 									<td style="width: 600px;">Booking a <%=b.getRoom().getRoomType()%>
 										room
 									</td>
-									<td style="width: 100px; text-align: center;">$ <%=b.getRoom().getRoomPrice()%></td>
+									<td style="width: 100px; text-align: center;">$ <%=b.getRoom().getRoomPrice()%>
+									</td>
 								</tr>
 								<tr>
 									<td style="width: 100px; text-align: center;">2</td>
-									<td style="width: 600px;"><%=b.getService().getsDetails()%></td>
-									<td style="width: 100px; text-align: center;"text-align:center;><%=b.getService().getPrice() != 0 ? "$ " + b.getService().getPrice() : "FREE"%></td>
+									<td style="width: 600px;"><%=b.getService().getsName()%></td>
+									<td style="width: 100px; text-align: center;"text-align:center;>
+										<%=b.getService().getPrice() != 0 ? "$ " + b.getService().getPrice() : "FREE"%>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2"
+										style="text-align: right; font-weight: bold; font-size: 16px; color: red;">Charge</td>
+									<td
+										style="text-align: center; font-weight: bold; font-size: 16px; color: red;">
+										<%=payment.getServiceChargePercentage() * 100%> %
+									</td>
 								</tr>
 								<tr>
 									<td colspan="2"
 										style="text-align: right; font-weight: bold; font-size: 24px;">Total</td>
 									<td
 										style="text-align: center; font-weight: bold; font-size: 24px">$
-										<%=payment.getTotalPayment()%></td>
+										<%=payment.getTotalPayment() +payment.getServiceChargePercentage()*payment.getTotalPayment()%>
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -109,6 +115,8 @@ Booking b = (Booking) request.getSession().getAttribute("bookingDetails");
 		<div class="main-button">
 			<button class="btn btn-primary generatePDF" onclick="generateBill()">Save
 				Bill</button>
+			<button class="btn btn-primary generatePDF" onclick="back()"
+				style="margin-left: 10px;">Back</button>
 		</div>
 	</main>
 	<style>
@@ -116,21 +124,22 @@ Booking b = (Booking) request.getSession().getAttribute("bookingDetails");
 	font-weight: bold;
 	font-size: 50px;
 	color: skyblue;
+	margin-left: 45%;
 }
 
 #table {
-	width: 70%;
+	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 #wrap1 {
 	width: 100%;
-	height: 200px;
+	padding-top: 30px;
+	padding-bottom: 30px;
 }
 
 #logo img {
-	margin-left: 160px;
 	max-width: 150px;
 }
 
@@ -138,17 +147,26 @@ Booking b = (Booking) request.getSession().getAttribute("bookingDetails");
 	display: flex;
 	justify-content: center;
 }
+
+#htmlContent {
+	width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+}
 </style>
 </body>
 <script>
 	//        Save pdf bill
 	function generateBill() {
-		var doc = new jsPDF('p', 'pt', 'a4', true);
-		doc.fromHTML($('#htmlContent').get(0), 20, 20, {
-			'width' : 700
+		var doc = new jsPDF('p', 'pt', 'a3', true);
+		doc.fromHTML($('#htmlContent').get(0), 15, 15, {
+			'width' : 170,
 		}, function() {
 			doc.save('payment.pdf');
 		});
 	};
+	function back() {
+		window.location = "BookListServlet";
+	}
 </script>
 </html>

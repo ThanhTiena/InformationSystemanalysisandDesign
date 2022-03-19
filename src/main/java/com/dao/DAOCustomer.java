@@ -78,4 +78,20 @@ public class DAOCustomer {
 		}
 		return true;
 	}
+
+	public int checkCustomerExisted(String email) {
+		int cid = 0;
+		try {
+			query = "select cid from customer where cemail='" + email + "'";
+			rs = db.doExecuteQuery(query);
+
+			if (rs.next()) {
+				cid = rs.getInt("cid");
+				System.out.println("user is existed!");
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return cid;
+	}
 }

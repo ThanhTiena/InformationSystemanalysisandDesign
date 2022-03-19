@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@page import="com.dao.DAOBooking"%>
 <%@page import="com.modelsSRP.Booking"%>
+<%@page import="com.modelsSRP.User"%>
 <%@page import="java.util.List"%>
 <html lang="en" dir="ltr">
 
@@ -22,6 +23,12 @@ if (list == null) {
 	request.getRequestDispatcher("manager_login.jsp").forward(request, response);
 }
 int i = 1;
+%>
+<%
+User user = (User) request.getSession().getAttribute("manager");
+if (user == null) {
+	request.getRequestDispatcher("manager_login.jsp").forward(request, response);
+}
 %>
 
 
@@ -70,11 +77,16 @@ int i = 1;
 				<input type="text" placeholder="Search..."> <i
 					class='bx bx-search'></i>
 			</div>
-			<div class="profile-details"></div>
+			<div class="profile-details"
+				style="color: #2697FF; background: #F5F6FA; border: 2px solid #EFEEF1; border-radius: 6px; padding: 0 15px 0 2px;">
+				<p style="margin-left: auto; margin-right: auto;">
+					Hello,
+					<%=user.getUserName()%></p>
+			</div>
 		</nav>
 
 		<div class="booking-content">
-			<h2 class="mb-5">Paradise Hotel System</h2>
+			<h2 class="mb-5" style="color: #0A2558 !important;">Paradise Hotel System</h2>
 			<div class="booking-form-check">
 				<div class="container">
 					<div class="table-responsive">

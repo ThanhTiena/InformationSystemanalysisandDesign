@@ -56,7 +56,7 @@
 							<div class="room-title">
 								<h3 class="room-title-header">Single Room</h3>
 							</div>
-							<div class="room-description">
+							<div class="room-description" style="color: gray;">
 								<p>Beatiful rooms with one bed, the rooms can be assigned
 									for one customer, suitable for ones who travels around.</p>
 								<p>
@@ -67,7 +67,7 @@
 									<b>Special: </b>A river view or a lake view.
 								</p>
 								<p class="price">
-									<b>Price: </b><i class="fa-solid fa-dollar-sign"></i>20
+									<b>Price: $20</b>
 								</p>
 							</div>
 							<div class="room-descript"></div>
@@ -119,7 +119,7 @@
 							<div class="room-title">
 								<h3 class="room-title-header">Double Room</h3>
 							</div>
-							<div class="room-description">
+							<div class="room-description" style="color: gray;">
 								<p>Beatiful rooms with two beds or twin beds, the rooms can
 									be assigned for a couple or 2 adults and a chilld</p>
 								<p>
@@ -130,7 +130,7 @@
 									<b>Special: </b>A golf with river view.
 								</p>
 								<p class="price">
-									<b>Price: </b><i class="fa-solid fa-dollar-sign"></i>30
+									<b>Price: $30</b>
 								</p>
 							</div>
 							<div class="room-descript"></div>
@@ -182,7 +182,7 @@
 							<div class="room-title">
 								<h3 class="room-title-header">Quad Room</h3>
 							</div>
-							<div class="room-description">
+							<div class="room-description" style="color: gray;">
 								<p>Large rooms with 4 beds or 2 twin beds, the rooms can be
 									assigned for four customers or family with maximum at five
 									people</p>
@@ -194,7 +194,7 @@
 									<b>Special: </b>A hill with woods view.
 								</p>
 								<p class="price">
-									<b>Price: </b><i class="fa-solid fa-dollar-sign"></i>100
+									<b>Price: $100</b>
 								</p>
 							</div>
 							<div class="room-descript"></div>
@@ -246,7 +246,7 @@
 							<div class="room-title">
 								<h3 class="room-title-header">Queen Room</h3>
 							</div>
-							<div class="room-description">
+							<div class="room-description" style="color: gray;">
 								<p>Royal and luxurious rooms with one or two beds, the rooms
 									bring customers a feeling of king's or queen's rooms. The rooms
 									can be assigned for single or couple use.</p>
@@ -262,7 +262,7 @@
 									<b>Special: </b>A golf with river view from a higher place.
 								</p>
 								<p class="price">
-									<b>Price: </b><i class="fa-solid fa-dollar-sign"></i>120
+									<b>Price: $120</b>
 								</p>
 							</div>
 							<div class="room-descript"></div>

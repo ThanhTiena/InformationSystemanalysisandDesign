@@ -1,7 +1,20 @@
-<%@ include file="html.jsp" %>
+<%@ include file="html.jsp"%>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<%
+boolean bookingStatus = false;
+try {
+	bookingStatus = (Boolean) session.getAttribute("BookingStatus");
+	session.removeAttribute("BookingStatus");
+} catch (Exception e) {
 
-<body>
-	<%@ include file="header.jsp" %>
+}
+%>
+<body onload="<%=bookingStatus ? "BookingStatus()" : ""%>">
+	<%
+	bookingStatus = false;
+	%>
+	<%@ include file="header.jsp"%>
 	<main>
 		<div class="slider">
 			<div class="container-fluid">
@@ -178,8 +191,20 @@
 		<span class="go-top"><i class="fa fa-angle-up"
 			aria-hidden="true"></i></span>
 	</main>
-	<%@ include file="footer.jsp" %>
-	
+	<%@ include file="footer.jsp"%>
+	<script type="text/javascript"
+		src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+	<script type="text/javascript">
+		function BookingStatus() {
+			Toastify({
+				text : "Booking Successful",
+				className : "info",
+				style : {
+					background : "linear-gradient(to right, #00b09b, #96c93d)",
+				}
+			}).showToast();
+		}
+	</script>
 </body>
 
 </html>

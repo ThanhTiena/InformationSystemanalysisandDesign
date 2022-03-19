@@ -13,11 +13,10 @@
 		<div class="title">MANAGER</div>
 		<form action="LoginServlet" method="post">
 			<div class="field">
-				<input type="text" name="login-username" required value="myadmin1"> <label>Email
-					Address</label>
+				<input type="text" name="login-username" required> <label>Username</label>
 			</div>
 			<div class="field">
-				<input type="password" name="signup-password" value="myadmin1" required> <label>Password</label>
+				<input type="password" name="signup-password" required> <label>Password</label>
 			</div>
 			<div class="authority">
 				<span>Wrong username or password. <br />Please try again!
@@ -68,7 +67,8 @@ body {
     color: #fff;
     user-select: none;
     border-radius: 15px 15px 0 0;
-    background: linear-gradient(-135deg, #c850c0, #4158d0);
+    background: -webkit-linear-gradient(to right, rgb(222 101 15 / 50%), rgb(210 210 198 / 50%));
+    background: linear-gradient(to right, rgb(222 101 15 / 50%), rgb(180 180 180 / 50%));
 }
 
 .wrapper form {
@@ -158,7 +158,8 @@ form .field input[type="submit"] {
     font-size: 20px;
     font-weight: 500;
     cursor: pointer;
-    background: linear-gradient(-135deg, #c850c0, #4158d0);
+    background: -webkit-linear-gradient(to right, rgb(222 101 15 / 50%), rgb(180 180 180 / 50%));
+    background: linear-gradient(to right, rgb(222 101 15 / 50%), rgb(180 180 180 / 50%));
     transition: all 0.3s ease;
 }
 

@@ -16,28 +16,28 @@
 											account</h3>
 										<form action="RegisterServlet" method="post">
 											<div class="form-outline mb-3">
-												<input type="text" id="signup-username" name="signup-username"
-													class="form-control form-control-lg" /> <label
-													class="form-label" for="signup-username">Your User Name</label>
+												<label class="form-label" for="signup-username">Your
+													User Name</label> <input type="text" id="signup-username"
+													name="signup-username" class="form-control form-control-lg" />
 											</div>
 
 											<div class="form-outline mb-3">
-												<input type="email" id="signup-email" name="signup-email"
-													class="form-control form-control-lg" /> <label
-													class="form-label" for="signup-email">Your Email</label>
+												<label class="form-label" for="signup-email">Your
+													Email</label> <input type="email" id="signup-email"
+													name="signup-email" class="form-control form-control-lg" />
 											</div>
 
 											<div class="form-outline mb-3">
-												<input type="password" id="signup-password" name="signup-password"
-													class="form-control form-control-lg" /> <label
-													class="form-label" for="signup-password">Password</label>
+												<label class="form-label" for="signup-password">Password</label>
+												<input type="password" id="signup-password"
+													name="signup-password" class="form-control form-control-lg" />
 											</div>
 
 											<div class="form-outline mb-3">
-												<input type="password" id="signup-confirm-password" name="signup-confirm-password"
-													class="form-control form-control-lg" /> <label
-													class="form-label" for="signup-confirm-password">Confirm
-													your password</label>
+												<label class="form-label" for="signup-confirm-password">Confirm
+													your password</label> <input type="password"
+													id="signup-confirm-password" name="signup-confirm-password"
+													class="form-control form-control-lg" />
 											</div>
 
 											<div class="d-flex justify-content-center">
@@ -46,7 +46,7 @@
 											</div>
 
 											<p class="text-center text-muted mt-3 mb-0">
-												Have already an account? <a href="login.html"
+												Have already an account? <a href="login.jsp"
 													class="fw-bold text-body"><u>Login here</u></a>
 											</p>
 										</form>

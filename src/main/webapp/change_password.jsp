@@ -12,31 +12,23 @@
 							<div class="col-12 col-md-9 col-lg-7 col-xl-6">
 								<div class="card" style="border-radius: 15px;">
 									<div class="card-body p-5">
-										<h3 class="text-uppercase text-center mb-3">Login</h3>
-										<form action="LoginServlet" method="post">
+										<h3 class="text-uppercase text-center mb-3">Enter New Password</h3>
+										<form action="ChangePassword" method="post">
 											<div class="form-outline mb-3">
-												<input type="text" id="login-username" name="login-username"
+												<input type="text" id="new-password" name="new-password"
 													class="form-control form-control-lg" /> <label
-													class="form-label" for="login-username">Username</label>
+													class="form-label" for="new-password">Password</label>
 											</div>
 
 											<div class="form-outline mb-3">
-												<input type="password" id="signup-password"
-													name="signup-password" class="form-control form-control-lg" />
-												<label class="form-label" for="signup-password">Password</label>
-											</div>
-											<div class="form-outline mb-3">
-												<a href="forget.jsp">Forgot the password</a>
+												<input type="password" id="re-password"
+													name="re-password" class="form-control form-control-lg" />
+												<label class="form-label" for="re-password">Confirm Password</label>
 											</div>
 											<div class="d-flex justify-content-center">
 												<button type="submit"
-													class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Login</button>
+													class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Change</button>
 											</div>
-
-											<p class="text-center text-muted mt-3 mb-0">
-												If you do not have an account. Please <a href="register.jsp"
-													class="fw-bold text-body"><u>Sign Up</u></a>
-											</p>
 										</form>
 									</div>
 								</div>

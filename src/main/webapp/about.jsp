@@ -4,9 +4,7 @@
 	<%@ include file="header.jsp"%>
 	<main>
 		<div class="about" id="about-id">
-			<h1>About Us</h1>
 			<div class="container">
-				<img src="./images/introduction.jpg" alt="about" loading="lazy">
 				<div class="about-content">
 					<h1>Welcome to Paradise Hotel</h1>
 					<p>Paradise Hotel is a leading 5-star international standard
@@ -22,9 +20,9 @@
 							all guests who come to our hotel and provide many special offers
 							for their next arrivals.</p>
 					</div>
-
 					<button type="button" id='more-btn' onclick="onMore()">More</button>
 				</div>
+				<img src="./images/introduction.jpg" alt="about" loading="lazy">
 
 			</div>
 		</div>

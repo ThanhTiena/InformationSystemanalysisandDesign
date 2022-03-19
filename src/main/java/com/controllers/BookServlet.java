@@ -51,6 +51,7 @@ public class BookServlet extends HttpServlet {
 				daoBooking.updateBookingCustomer(daoCustomer.getCustomer(user.getAccountID()));
 
 				session.setAttribute("customerInfo", customer);
+				session.setAttribute("BookingStatus", true);
 				request.getRequestDispatcher("homepage.jsp").forward(request, response);
 			} else {
 				request.getRequestDispatcher("book_room.jsp").forward(request, response);
